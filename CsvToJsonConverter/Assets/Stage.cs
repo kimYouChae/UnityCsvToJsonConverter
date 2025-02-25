@@ -5,9 +5,10 @@ using UnityEngine;
 public interface ICsvParsable
 {
     void Parse(string[] values);
+
 }
 
-
+[System.Serializable]
 public class Stage : ICsvParsable
 {
     [SerializeField] private int hp;
