@@ -23,7 +23,7 @@ public class CsvToJsonConverter : MonoBehaviour
 
     public void CsvConverByName()
     {
-        Debug.Log(" 테스트 메서드 입니다");
+        Debug.Log("CsvConverter메서드입니다");
 
         for (int i = 0; i < className.Length; i++)
         {
@@ -43,16 +43,16 @@ public class CsvToJsonConverter : MonoBehaviour
                 continue;
             }
 
-            // CsvConverter<> 클래스의 타입을
+            // CsvDataParsing<> 클래스의 타입을
             // MakeGeneritType : type으로 제네릭 지정
-            // convertype : 즉 CsvConverter<클래스명>이 된다
+            // convertype : 즉 CsvDataParsing<클래스명>이 된다
             Type converterType = typeof(CsvDataParsing<>).MakeGenericType(type);
 
-            // CsvConverter를 인스턴스화 
+            // CsvDataParsing 인스턴스화 
             // 매개변수는 className[i]
             object converterInstance = Activator.CreateInstance(converterType, className[i]);
 
-            // CsvConverter<>의 GetDataArray() 메서드 가져오기 
+            // CsvDataParsing<>의 GetDataArray() 메서드 가져오기 
             MethodInfo method = converterType.GetMethod("GetDataArray");
 
             if (method != null)
@@ -74,12 +74,6 @@ public class CsvToJsonConverter : MonoBehaviour
 
                 Debug.Log($"{className[i]} 데이터를 성공적으로 변환했습니다.");
             }
-
-            // Json으로 Convert
-            //string json = JsonConverter.ConvertObjectTypeToJson(list, type);
-
-            // 저장
-            //JsonConverter.SaveJsonToFile(json, className[i]);
 
         }
     }
