@@ -3,7 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+public interface ICsvParsable
+{
+    void Parse(string[] values);
 
+}
 public class CsvToJsonConverter : MonoBehaviour
 {
     /// <summary>

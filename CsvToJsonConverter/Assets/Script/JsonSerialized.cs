@@ -52,27 +52,32 @@ public static class JsonSerialized
         }
     }
 
-    /*
-    // 오브젝트 타입 - Json
-    public static string ConvertObjectTypeToJson( List<object> dataArray , Type arrayType) 
+    // 해당 경로에 있는 텍스트 파일 가져오기 
+    public static string GetTextFile(string fileName)
     {
-        // dataArray을 List<T>로 바꿔야함, 타입은 arrayType
-        //IList list = dataArray.Cast<arrayType>().ToList()
-
-        // 인덱스로 액세스 할 수 있는 개체 컬렉션인지? 
-        if (dataArray is IList) 
+        try
         {
-            // array Type으로 ListWrapper<> 인스턴스화
-            object wrapper = Activator.CreateInstance(typeof(ListWrapper<>).MakeGenericType(arrayType));
+            string path = Path.Combine(savePath, fileName);
+            string readText = File.ReadAllText(path);
 
-            // 객제의 List<>의 변수(values)를 가져옴
-            FieldInfo listProperty = wrapper.GetType().GetField("values");
-
-            return JsonUtility.ToJson(wrapper);
-
+            return readText;
         }
-        return "";
+        catch (Exception ex)
+        {
+            Debug.LogError($"파일 불러오는 중 오류 발생: {ex.Message}");
+            return "";
+        }
     }
 
-    */
+    // 역직렬화
+    public static List<T> Deserialization<T>(string fileName)
+    {
+        string readText = GetTextFile(fileName);
+
+        ListWrapper<T> temp = JsonUtility.FromJson<ListWrapper<T>>(readText);
+
+        return temp.values;
+    }
+
+
 }

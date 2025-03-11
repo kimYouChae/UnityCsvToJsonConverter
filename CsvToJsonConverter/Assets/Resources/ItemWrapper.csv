@@ -1,0 +1,9 @@
+itemNum,itemType,itemName,itemToolTip,attackSpeed,attackDamage,durationTime,effectType
+1,weapon,쇠지렛대,쇠지렛대 입니다,2,10,-1,-1
+2,weapon,소방도끼,소방도끼 입니다,3,12,-1,-1
+3,weapon,마테체,마테체 입니다,1,7,-1,-1
+4,weapon,후라이팬,후라이팬 입니다,2,4,-1,-1
+5,weapon,곡괭이,곡괭이 입니다,4,17,-1,-1
+6,weapon,빠따,빠따 입니다,3,9,-1,-1
+7,useable,스피드부스트,일정시간 속도가 빨라집니다,-1,-1,3,Speed
+8,useable,더블점프,일정시간 더블점프가 가능합니다,-1,-1,5,JumpCount
